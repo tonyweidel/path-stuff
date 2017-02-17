@@ -1,8 +1,8 @@
 //Your code below
 function buildPath(p,n){
   let path = [];
-  for (let t=0; t,n-1;t++){
-    let r=Math.random;
+  for (let t=0; t<n-1;t++){
+    let r=Math.random();
     if(r<=p){
       path.push(false);
     }
@@ -17,12 +17,26 @@ function stroll(path,i){
   if(i==path.length-1){
     return 1;
   }
-    else if(path[index]==false){
+    else if(path[i]==false){
       return 0;
     }
     else{
-      return function stroll(path,i+1);
+      return stroll(path,i+1);
     }
+}
+function rsj(path,i){
+  if(i==path.length-1){
+    return 1;
+  }
+  else if(path[i]==false){
+    return 0;
+  }
+  else if(i>=path.length){
+    return 0;
+  }
+  else{
+    return rsj(path,i+1)+rsj(path,i+2)+rsj(path,i+5);
+  }
 }
 
 //Test code
